@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import './App.css';
+import Resultados from './components/Resultados';
+import Buscador from './components/Buscador';
+
 
 function App() {
   const [query, setQuery] = useState('');
   const [resultados, setResultados] = useState([]);
+  const [recientes, setRecientes] = useState([]);
+
 
   const buscar = async () => {
   if (!query.trim()) {
@@ -22,31 +27,57 @@ function App() {
     console.error('Error al buscar:', error);
   }
 };
+const verRecientes = async () => {
+  const apiKey = import.meta.env.VITE_FACTCHECK_API_KEY;
+  const url = `https://factchecktools.googleapis.com/v1alpha1/claims:search?query=a&maxAgeDays=7&key=${apiKey}`;
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    setRecientes(data.claims || []);
+  } catch (error) {
+    console.error('Error al buscar recientes:', error);
+  }
+};
+
 
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>CheckIt 🔍</h1>
-      <input
-        type="text"
-        placeholder="Escribí una afirmación..."
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        style={{ padding: '0.5rem', width: '70%' }}
-      />
-      <button onClick={buscar} style={{ marginLeft: '1rem' }}>Buscar</button>
+  <div style={{ padding: '2rem' }}>
+    <h1>CheckIt 🔍</h1>
+    <Buscador query={query} setQuery={setQuery} onBuscar={buscar} />
 
+    {/* Mostrar resultados */}
+    {resultados.length > 0 ? (
       <ul>
-        {resultados.map((item, index) => (
-          <li key={index} style={{ marginTop: '1rem' }}>
-            <strong>{item.text}</strong><br />
-            <em>{item.claimReview?.[0]?.text}</em><br />
-            Fuente: {item.claimReview?.[0]?.publisher?.name}
-          </li>
-        ))}
+        {resultados.length === 0 && query && (
+          <div style={{ marginTop: '1rem' }}>
+            <p>❗ No se encontraron resultados para “{query}”.</p>
+            <p>Probá con frases como:</p>
+            <ul>
+              <li>“vacuna covid causa infertilidad”</li>
+              <li>“Putin está muerto”</li>
+              <li>“el cambio climático es un invento”</li>
+            </ul>
+            <button onClick={verRecientes} style={{ marginTop: '1rem' }}>
+              Ver verificaciones recientes
+            </button>
+          </div>
+        )}
+
+      <Resultados resultados={resultados} titulo="Resultados de búsqueda" />
+      {recientes.length > 0 && (
+        <Resultados resultados={recientes} titulo="Verificaciones recientes" />
+      )}
+
+
       </ul>
-    </div>
-  );
+    ) : (
+      query && <p style={{ marginTop: '1rem' }}>❗ No se encontraron resultados para “{query}”.</p>
+    )}
+  </div>
+);
+
 }
 
 export default App;
