@@ -1,0 +1,390 @@
+
+/* --- RESET --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- FUENTE GLOBAL --- */
+body {
+  font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  background-color: #fafafa;
+  color: #333;
+  line-height: 1.6;
+  padding: 2rem;
+}
+
+/* --- ENCABEZADO --- */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+/* --- INPUTS y BOTONES --- */
+input[type="text"] {
+  padding: 0.5rem;
+  width: 70%;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #0055aa;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #003f88;
+}
+
+/* --- RADIO BUTTONS --- */
+input[type="radio"] {
+  margin-right: 0.3rem;
+}
+
+/* --- NOTA ACLARATORIA --- */
+.nota-aclaratoria {
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+.contenedor-app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.titulo-principal {
+  font-size: 2.7rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  color: #1a237e;
+  letter-spacing: -0.5px;
+}
+
+
+.mensaje-sin-resultados {
+  margin-top: 2rem;
+}
+
+.formulario-busqueda {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.5rem;
+}
+
+.input-busqueda {
+  padding: 0.5rem;
+  width: 70%;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.boton-buscar {
+  width: fit-content;
+  padding: 0.5rem 1rem;
+  background-color: #0055aa;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-top: 0.5rem;
+}
+
+.boton-buscar:hover {
+  background-color: #003f88;
+}
+
+.selector-region {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+.aclaracion-region {
+  font-size: 0.85rem;
+  text-align: center;
+  color: #666;
+  margin-top: 0.3rem;
+}
+.opcion-internacional {
+  margin-left: 1.5rem;
+}
+
+.nota-aclaratoria {
+  font-size: 0.95rem;
+  color: #555;
+  margin-top: 0.7rem;
+  text-align: center;
+}
+/* --- LAYOUT GENERAL --- */
+body {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* --- MEDIA QUERIES --- */
+@media (max-width: 600px) {
+  .input-busqueda {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+
+  .boton-buscar {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .formulario-busqueda {
+    display: flex;
+    flex-direction: column;
+    
+    margin-bottom: 2rem;
+    
+   
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .selector-region {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tarjeta {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .veredicto {
+    display: block;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .nota-aclaratoria {
+    font-size: 0.85rem;
+  }
+}
+.leyenda-veredictos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.leyenda-tag {
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Colores por tipo */
+.verdadero {
+  background-color: #2e7d32;
+}
+
+.falso {
+  background-color: #c62828;
+}
+
+.engañoso {
+  background-color: #fbc02d;
+  color: #000;
+}
+
+.parcial {
+  background-color: #f9a825;
+  color: #000;
+}
+
+.indefinido {
+  background-color: #757575;
+}
+
+.mensaje-sin-resultados {
+  border: 1px solid #ccc;
+  background-color: #fff8e1;
+  padding: 1rem;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  font-size: 1rem;
+  color: #444;
+  transition: all 0.3s ease-in-out;
+  opacity: 1;
+}
+
+.mensaje-sin-resultados p {
+  margin-bottom: 0.5rem;
+}
+.boton-limpiar {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #bbb;
+  padding: 0.45rem 1rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.boton-limpiar:hover {
+  background-color: #e0e0e0;
+}
+.subtitulo {
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+@keyframes reboteEntrada {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.titulo-principal {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  color: #1a237e;
+  letter-spacing: -0.5px;
+  animation: reboteEntrada 0.9s ease-out;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header-principal {
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
+}
+
+.titulo-principal {
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.1s;
+}
+.logo-lupa {
+  height: 1.8em;
+  vertical-align: middle;
+  margin-left: 0.3rem;
+  margin-bottom: 0.15rem;
+}
+
+
+.subtitulo {
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+.leyenda-veredictos {
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+.formulario-busqueda {
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 7s;
+}
+
+/* Splash Screen */
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeOut 1.2s ease-out 2.4s forwards;
+}
+
+.splash-logo {
+  width: 200px;
+  animation: grow 2.4s ease-in-out;
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+.footer-app {
+  text-align: center;
+  padding: 1.2rem;
+  font-size: 0.9rem;
+  color: #555;
+  background-color: #f4f4f4;
+  margin-top: 3rem;
+  border-top: 1px solid #ddd;
+}
+.footer-app strong {
+  color: #000;
+}
+
+
+
+
+
+

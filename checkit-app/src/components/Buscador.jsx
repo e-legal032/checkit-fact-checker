@@ -1,4 +1,14 @@
-function Buscador({ query, setQuery, onBuscar, region, setRegion }) {
+import { useRef, useEffect } from 'react';
+
+function Buscador({ query, setQuery, onBuscar, region, setRegion, reiniciar }) {
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (reiniciar && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [reiniciar]);
+
   const manejarInput = (e) => {
     setQuery(e.target.value);
   };
@@ -9,18 +19,21 @@ function Buscador({ query, setQuery, onBuscar, region, setRegion }) {
   };
 
   return (
-    <form onSubmit={manejarSubmit} style={{ marginBottom: '2rem' }}>
+    <form onSubmit={manejarSubmit} className="formulario-busqueda">
       <input
+        ref={inputRef}
         type="text"
         placeholder="Escribí una afirmación para verificar..."
         value={query}
         onChange={manejarInput}
-        style={{ padding: '0.5rem', width: '70%' }}
+        className="input-busqueda"
       />
-      <button type="submit" style={{ marginLeft: '1rem' }}>
+
+      <button type="submit" className="boton-buscar">
         Buscar
       </button>
-      <div style={{ marginTop: '1rem' }}>
+
+      <div className="selector-region">
         <label>
           <input
             type="radio"
@@ -31,7 +44,7 @@ function Buscador({ query, setQuery, onBuscar, region, setRegion }) {
           Argentina
         </label>
 
-        <label style={{ marginLeft: '1.5rem' }}>
+        <label>
           <input
             type="radio"
             value="internacional"
@@ -42,6 +55,14 @@ function Buscador({ query, setQuery, onBuscar, region, setRegion }) {
         </label>
       </div>
 
+      <p className="aclaracion-region">
+        Elegí la región para ajustar los resultados de búsqueda.
+      </p>
+
+      <p className="nota-aclaratoria">
+        🔎 <strong>CheckIt</strong> te ayuda a verificar afirmaciones con <strong>fuentes confiables</strong> de todo el mundo.<br/>
+        Escribí una frase y descubrí si fue chequeada.
+      </p>
     </form>
   );
 }

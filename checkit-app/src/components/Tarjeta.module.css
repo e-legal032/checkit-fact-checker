@@ -1,0 +1,69 @@
+.tarjeta {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: #f9f9f9;
+  list-style: none;
+}
+
+/* Colores por veredicto */
+.veredictoVerdadero {
+  border-left: 6px solid #2e7d32;
+  background-color: #e8f5e9;
+}
+
+.veredictoFalso {
+  border-left: 6px solid #c62828;
+  background-color: #ffebee;
+}
+
+.veredictoEngañoso {
+  border-left: 6px solid #fbc02d;
+  background-color: #fffde7;
+}
+
+.veredictoParcial {
+  border-left: 6px solid #f9a825;
+  background-color: #fff8e1;
+}
+
+.veredictoIndefinido {
+  border-left: 6px solid #9e9e9e;
+  background-color: #eeeeee;
+}
+
+/* Elementos internos */
+.titulo {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.veredicto {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  background-color: #eef;
+}
+
+.textoFuente {
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.fuente {
+  margin-bottom: 0.3rem;
+  color: #555;
+}
+
+.link {
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+.link:hover {
+  text-decoration: underline;
+}

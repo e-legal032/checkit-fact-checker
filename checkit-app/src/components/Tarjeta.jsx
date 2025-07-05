@@ -1,3 +1,5 @@
+import styles from './Tarjeta.module.css';
+
 function extraerVeredicto(rating) {
   if (!rating) return "🔎 Veredicto no disponible";
   const t = rating.toLowerCase();
@@ -10,52 +12,35 @@ function extraerVeredicto(rating) {
   return "🔎 Veredicto no claro";
 }
 
+function claseEstilo(veredicto) {
+  if (veredicto.includes("✅")) return styles.veredictoVerdadero;
+  if (veredicto.includes("❌")) return styles.veredictoFalso;
+  if (veredicto.includes("⚠️")) return styles.veredictoEngañoso;
+  if (veredicto.includes("🟡")) return styles.veredictoParcial;
+  return styles.veredictoIndefinido;
+}
+
 function Tarjeta({ claimData }) {
   const claim = claimData.claimReview?.[0];
   const veredicto = extraerVeredicto(claim?.textualRating);
+  const claseVeredicto = claseEstilo(veredicto);
 
   return (
-    <li
-      style={{
-        border: '1px solid #ccc',
-        borderRadius: '8px',
-        padding: '1rem',
-        marginBottom: '1rem',
-        background: '#f9f9f9',
-      }}
-    >
-      <h3>{claimData.text}</h3>
+    <li className={`${styles.tarjeta} ${claseVeredicto}`}>
+      <h3 className={styles.titulo}>{claimData.text}</h3>
 
       {claim && (
         <>
-          <p style={{
-            display: 'inline-block',
-            padding: '0.3rem 0.6rem',
-            borderRadius: '4px',
-            backgroundColor: '#eef',
-            fontWeight: 'bold',
-            marginBottom: '0.5rem'
-          }}>
-            {veredicto}
-          </p>
-
-          <p style={{ fontStyle: 'italic', marginTop: '0.5rem' }}>
-            {claim.text}
-          </p>
-
-          <p style={{ marginBottom: '0.3rem' }}>
+          <p className={styles.veredicto}>{veredicto}</p>
+          <p className={styles.textoFuente}>{claim.text}</p>
+          <p className={styles.fuente}>
             Fuente: <strong>{claim.publisher?.name}</strong>
           </p>
-
           <a
             href={claim.url}
             target="_blank"
             rel="noopener noreferrer"
-            style={{
-              color: '#0077cc',
-              textDecoration: 'none',
-              fontWeight: 'bold'
-            }}
+            className={styles.link}
           >
             Ver análisis completo ↗
           </a>
