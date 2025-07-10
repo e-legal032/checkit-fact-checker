@@ -1,4 +1,4 @@
-![CheckIt banner](/screenshots/banner.png)
+![CheckIt banner](./screenshots/banner.png)
 
 # CheckIt 🔍
 
