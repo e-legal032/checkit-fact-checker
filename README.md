@@ -27,7 +27,7 @@
 ---
 
 ## 📁 Estructura del proyecto
-![Estructura del proyecto](./checkit-app/screenshots/estructura-proyecto.png)
+![Estructura del proyecto](./checkit-app/screenshots/mapa_de_carpetas.png)
 
 
 ---
